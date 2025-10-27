@@ -1,0 +1,406 @@
+/* --- Reseteo Básico y Variables --- */
+:root {
+    --color-primario: #0D47A1; /* Un azul municipal oscuro */
+    --color-secundario: #1976D2; /* Un azul más claro */
+    --color-acento: #FFC107; /* Un acento dorado/amarillo */
+    --color-texto: #333;
+    --color-fondo: #f4f7f6;
+    --radio-borde: 8px; /* Bordes redondeados */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primario);
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- 1. Header (Barra Superior) --- */
+.top-bar {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 8px 0;
+    font-size: 0.9rem;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Para móviles */
+}
+
+.top-bar-horario,
+.top-bar-social {
+    padding: 5px 0;
+}
+
+.top-bar-social a {
+    color: white;
+    margin-left: 15px;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.top-bar-social a:hover {
+    color: var(--color-acento);
+}
+
+/* --- 2. Nav (Navegación Principal) --- */
+.navbar {
+    background-color: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primario);
+}
+
+.navbar-menu {
+    display: flex;
+}
+
+.navbar-menu li {
+    position: relative;
+}
+
+.navbar-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--color-texto);
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+    background-color: var(--color-fondo);
+    color: var(--color-primario);
+}
+
+/* Submenú (Dropdown) */
+.navbar-submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 240px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 0 0 var(--radio-borde) var(--radio-borde);
+    z-index: 1001;
+}
+
+.navbar-menu li:hover > .navbar-submenu {
+    display: block;
+}
+
+.navbar-submenu a {
+    padding: 12px 20px;
+    width: 100%;
+}
+
+/* Botón de Menú Móvil (Hamburguesa) */
+.navbar-toggle {
+    display: none;
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-primario);
+}
+
+/* --- 3. Main (Contenido Principal) --- */
+main {
+    padding-top: 30px;
+}
+
+/* Slider */
+#slider {
+    width: 100%;
+    height: 500px; /* Altura del slider */
+    background-color: #ddd;
+    border-radius: var(--radio-borde);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Imágenes de placeholder para el slider */
+.slide-1 { background-image: url('https://placehold.co/1200x500/0D47A1/FFFFFF?text=Gestión+Municipal'); }
+.slide-2 { background-image: url('https://placehold.co/1200x500/1976D2/FFFFFF?text=Obras+y+Proyectos'); }
+.slide-3 { background-image: url('https://placehold.co/1200x500/FFC107/333333?text=Bienvenido+a+San+Antonio'); }
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 20px 30px;
+    border-radius: var(--radio-borde);
+    max-width: 60%;
+}
+
+.slide-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.slide-content a {
+    display: inline-block;
+    background-color: var(--color-acento);
+    color: var(--color-texto);
+    padding: 10px 20px;
+    border-radius: var(--radio-borde);
+    margin-top: 10px;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.slide-content a:hover {
+    background-color: #ffd040;
+}
+
+/* Tarjetas de Contenido */
+#cards {
+    padding: 40px 0;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background-color: white;
+    border-radius: var(--radio-borde);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    color: var(--color-primario);
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.card-content a {
+    color: var(--color-secundario);
+    font-weight: 700;
+}
+
+.card-content a:hover {
+    text-decoration: underline;
+}
+
+/* --- 4. Footer (Pie de Página) --- */
+footer {
+    background-color: #263238; /* Un gris oscuro azulado */
+    color: #ccc;
+    padding-top: 40px;
+    margin-top: 30px;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding-bottom: 40px;
+}
+
+.footer-col h4 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Pequeño subrayado decorativo */
+.footer-col h4::after {
+    content: '';
+    width: 50px;
+    height: 2px;
+    background-color: var(--color-acento);
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+}
+
+.footer-col p {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.footer-col i {
+    width: 20px;
+    margin-right: 8px;
+    color: var(--color-acento);
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul a {
+    color: #ccc;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-col ul a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.footer-social a {
+    color: #ccc;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--color-acento);
+}
+
+.footer-copyright {
+    background-color: #1a2226;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid #444;
+}
+
+/* --- 5. Responsividad (Móviles) --- */
+@media (max-width: 992px) {
+    .navbar .container {
+        flex-wrap: wrap;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu {
+        display: none; /* Oculto por defecto */
+        flex-direction: column;
+        width: 100%;
+        background-color: white;
+        margin-top: 15px;
+        border-top: 1px solid var(--color-fondo);
+    }
+    
+    /* Clase que se añade con JS */
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-menu li {
+        width: 100%;
+    }
+
+    .navbar-submenu {
+        position: static; /* Ya no es absoluto */
+        display: block; /* Siempre visible si está en el DOM */
+        box-shadow: none;
+        background-color: var(--color-fondo);
+        padding-left: 20px;
+        width: 100%;
+    }
+    
+    /* Ocultamos los submenús por defecto en móvil */
+    .navbar-menu li:hover > .navbar-submenu {
+        display: none;
+    }
+    
+    /* Mostramos submenú al hacer clic en el padre (requiere JS) */
+    .navbar-menu li.open > .navbar-submenu {
+        display: block;
+    }
+
+    .slide-content {
+        max-width: 90%;
+        bottom: 20px;
+        left: 20px;
+        padding: 15px;
+    }
+    
+    .slide-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .top-bar .container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
